@@ -72,7 +72,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/findgoods',
             views: {
               'menuContent': {
-                templateUrl: 'templates/findgoods.html'
+                  templateUrl: 'templates/goods/findgoods.html'
               }
             }
           })
@@ -99,7 +99,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             views: {
               'menuContent': {
                 templateUrl: 'templates/xinyuandan.html',
-                controller: 'PlaylistsCtrl'
+                  controller: 'wishlist'
               }
             }
           })
@@ -124,7 +124,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/goodsdetails',
             views: {
               'menuContent': {
-                templateUrl: 'templates/goodsdetails.html'
+                  templateUrl: 'templates/goods/goodsdetails.html'
               }
             }
           })
@@ -147,6 +147,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             }
           })
 
+          .state('app.changnicknam', {
+              url: '/changnicknam',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/set/changnicknam.html'
+                  }
+              }
+          })
           .state('app.changepassword', {
             url: '/changepassword',
             views: {

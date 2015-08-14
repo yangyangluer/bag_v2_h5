@@ -48,15 +48,15 @@ angular.module('starter.controllers', [])
     }, 1000);
   };
 })
-.controller('PlaylistsCtrl', ['$scope', 'serverData', '$localstorage', function($scope,serverData,$localstorage) {
-        //  var xinyuandan =  $localstorage.getObject("post");
-        var xinyuandan = window.tempdata;
-        $scope.playlists=[];
+    .controller('wishlist', ['$scope', 'serverData', '$localstorage', function ($scope, serverData, $localstorage) {
+        var xinyuandan = $localstorage.getObject("wishlist");
+        //var xinyuandan = window.tempdata;
+        $scope.wishlist = [];
         angular.forEach(xinyuandan,function(item,i){
             item.$$hashKey = null;
-            $scope.playlists.push(item);
+            $scope.wishlist.push(item);
         });
-        console.log($scope.playlists);
+        console.log($scope.wishlist);
   // $scope.playlists.concat();
 
        // console.log($scope.playlists);
@@ -64,11 +64,11 @@ angular.module('starter.controllers', [])
          //console.log(message);
           var ls = JSON.parse(message);
           //console.log("ls======" + ls);
-          $scope.playlists.unshift(ls);
-          $localstorage.setObject("post",$scope.playlists);
+          $scope.wishlist.unshift(ls);
+          $localstorage.setObject("wishlist", $scope.wishlist);
       });
     }])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-        alert($scope.playlists);
-      alert($stateParams.id);
+        //   alert($scope.playlists);
+        //alert($stateParams.id);
 });
