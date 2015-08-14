@@ -49,12 +49,13 @@ angular.module('starter.controllers', [])
   };
 })
 .controller('PlaylistsCtrl', ['$scope', 'serverData', '$localstorage', function($scope,serverData,$localstorage) {
-    var xinyuandan =  $localstorage.getObject("post");
+        //  var xinyuandan =  $localstorage.getObject("post");
+        var xinyuandan = window.tempdata;
         $scope.playlists=[];
         angular.forEach(xinyuandan,function(item,i){
             item.$$hashKey = null;
             $scope.playlists.push(item);
-        })
+        });
         console.log($scope.playlists);
   // $scope.playlists.concat();
 
@@ -68,6 +69,6 @@ angular.module('starter.controllers', [])
       });
     }])
 .controller('PlaylistCtrl', function($scope, $stateParams) {
-      alert($scope.playlists)
+        alert($scope.playlists);
       alert($stateParams.id);
 });
