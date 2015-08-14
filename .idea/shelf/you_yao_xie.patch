@@ -1,0 +1,53 @@
+Index: www/js/vertxbus.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- www/js/vertxbus.js	(date 1439458461000)
++++ www/js/vertxbus.js	(revision )
+@@ -1,0 +1,0 @@
+Index: .idea/libraries/sidemenu_node_modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/libraries/sidemenu_node_modules.xml	(date 1439458461000)
++++ .idea/libraries/sidemenu_node_modules.xml	(revision )
+@@ -1,0 +1,0 @@
+Index: www/templates/shangpingliebiao.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- www/templates/shangpingliebiao.html	(date 1439458461000)
++++ www/templates/shangpingliebiao.html	(revision )
+@@ -1,0 +1,0 @@
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>GBK
+===================================================================
+--- .idea/.name	(date 1439458461000)
++++ .idea/.name	(revision )
+@@ -1,1 +1,1 @@
+-sidemenu
+\ No newline at end of file
++bag_v2_h5
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/modules.xml	(date 1439458461000)
++++ .idea/modules.xml	(revision )
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ProjectModuleManager">
+     <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/sidemenu.iml" filepath="$PROJECT_DIR$/.idea/sidemenu.iml" />
++      <module fileurl="file://$PROJECT_DIR$/.idea/bag_v2_h5.iml" filepath="$PROJECT_DIR$/.idea/bag_v2_h5.iml" />
+     </modules>
+   </component>
+ </project>
+\ No newline at end of file
