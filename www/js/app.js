@@ -76,12 +76,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               }
             }
           })
-
+          .state('app.goodslist', {
+              url: '/goodslist',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/goods/goodslist.html'
+                  }
+              }
+          })
           .state('app.customgoods', {
             url: '/customgoods',
             views: {
               'menuContent': {
-                templateUrl: 'templates/customgoods.html'
+                  templateUrl: 'templates/goods/customgoods.html'
               }
             }
           })
@@ -93,7 +100,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               }
             }
           })
+          .state('app.wishlistdetails', {
+              url: '/wishlistdetails',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/wish/wishlistdetails.html'
+                  }
+              }
+          })
 
+          .state('app.wishlists', {
+              url: '/wishlists',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/wish/wishlists.html',
+                      controller: 'wishlist'
+                  }
+              }
+          })
           .state('app.xinyuandan', {
             url: '/xinyuandan',
             views: {
@@ -103,28 +127,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               }
             }
           })
-          .state('app.shangpinxiangqing', {
-            url: '/shangpinxiangqing/:id',
+          .state('app.goodsdetails', {
+              url: '/goodsdetails/:id',
             views: {
               'menuContent': {
                 controller: 'PlaylistCtrl',
-                templateUrl: 'templates/shangpinxiangqing.html'
+                  templateUrl: 'templates/goods/goodsdetails.html'
               }
             }
           })
+
           .state('app.contactbuyer', {
             url: '/contactbuyer',
             views: {
               'menuContent': {
-                templateUrl: 'templates/contactbuyer.html'
-              }
-            }
-          })
-          .state('app.goodsdetails', {
-            url: '/goodsdetails',
-            views: {
-              'menuContent': {
-                  templateUrl: 'templates/goods/goodsdetails.html'
+                  templateUrl: 'templates/wish/contactbuyer.html'
               }
             }
           })
@@ -218,10 +235,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 templateUrl: 'templates/personalcenter/systemmessage.html'
               }
             }
-
           })
+          .state('app.fenxiang', {
+              url: '/fenxiang',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/share/fenxiang.html',
+                      controller: 'MyController'
 
-
+                  }
+              }
+          })
           .state('app.single', {
             url: '/playlists/:playlistId',
             views: {

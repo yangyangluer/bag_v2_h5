@@ -1,33 +1,26 @@
 <ion-view view-title="购物袋">
     <ion-content>
         <ion-list>
-            <!--<ion-item ng-repeat="playlist in playlists" href="#/app/shangpinxiangqing/{{playlist._id}}">-->
-            <!--<div class="scroll-content text-center padding">-->
-            <!--<h3>{{playlist.title}}</h3>-->
-            <!--</div>-->
-            <!--<div  style="width: auto; height: 250px;" >-->
-            <!--<img ng-src="{{playlist.image}}" class="image ion-image" style="width: 100%;height: 100%;display: block;" />-->
-            <!--</div>-->
-            <!--<div class="text-center">-->
-            <!--{{playlist.site_name}}-->
-            <!--</div>-->
-            <!--<div class="text-center">-->
-            <!--{{playlist.product_price_amount}}  {{playlist.product_price_currency}}-->
-            <!--</div>-->
-            <!--<div class="button-bar">-->
-            <!--<a class="button button-stable button-block  icon-left ion-share" href="#/app/gongxiang">分享</a>-->
-            <!--<a class="button button-stable button-block  icon-right ion-edit" >备注</a>-->
-            <!--</div>-->
-            <!--</ion-item>-->
-            <ion-item>
+            <ion-item ng-repeat="wish in wishlist" href="#/app/shangpinxiangqing/{{wish._id}}">
+                <div class="scroll-content text-center padding">
+                    <h3>{{wish.title}}</h3>
+                </div>
                 <div style="width: auto; height: 250px;">
-                    <img class="image ion-image" style="width: 100%;height: 100%;display: block;"/>
+                    <img ng-src="{{wish.image}}" class="image ion-image"
+                         style="width: 100%;height: 100%;display: block;"/>
+                </div>
+                <div class="text-center">
+                    {{wish.site_name}}
+                </div>
+                <div class="text-center">
+                    {{wish.product_price_amount}} {{wish.product_price_currency}}
                 </div>
                 <div class="button-bar">
-                    <a class="button button-stable button-block  icon-left ion-share" href="#/app/share">分享</a>
+                    <a class="button button-stable button-block  icon-left ion-share" href="#/app/gongxiang">分享</a>
                     <a class="button button-stable button-block  icon-right ion-edit">备注</a>
                 </div>
             </ion-item>
+
         </ion-list>
     </ion-content>
 </ion-view>
