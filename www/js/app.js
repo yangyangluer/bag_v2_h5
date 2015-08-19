@@ -72,7 +72,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/findgoods',
             views: {
               'menuContent': {
-                  templateUrl: 'templates/goods/findgoods.html'
+                  templateUrl: 'templates/goods/findgoods.html',
+                  controller: 'FindGoodsCtrl'
               }
             }
           })
@@ -80,6 +81,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               url: '/goodslist',
               views: {
                   'menuContent': {
+                      controller: 'GoodslistCtrl',
                       templateUrl: 'templates/goods/goodslist.html'
                   }
               }
@@ -96,7 +98,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/share',
             views: {
               'menuContent': {
-                templateUrl: 'templates/share/share.html'
+                  templateUrl: 'templates/share/share.html',
+                  controller: 'ShareCtrl'
               }
             }
           })
@@ -118,39 +121,41 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                   }
               }
           })
-          .state('app.xinyuandan', {
-            url: '/xinyuandan',
-            views: {
-              'menuContent': {
-                templateUrl: 'templates/xinyuandan.html',
-                  controller: 'wishlist'
+          .state('app.iboughthand', {
+              url: '/iboughthand',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/personalcenter/iboughthand.html',
+                      controller: 'BoughthandCtrl'
+                  }
               }
-            }
           })
           .state('app.goodsdetails', {
-              url: '/goodsdetails/:id',
+              url: '/goodsdetails',
             views: {
               'menuContent': {
-                controller: 'PlaylistCtrl',
+                  controller: 'GoodsdetailsCtrl',
                   templateUrl: 'templates/goods/goodsdetails.html'
               }
             }
           })
 
           .state('app.contactbuyer', {
-            url: '/contactbuyer',
-            views: {
-              'menuContent': {
-                  templateUrl: 'templates/wish/contactbuyer.html'
+              url: '/contactbuyer',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/boughthand/contactbuyer.html',
+                      controller: 'ContactbuyerCtrl'
+                  }
               }
-            }
           })
 
           .state('app.feedback', {
             url: '/feedback',
             views: {
               'menuContent': {
-                templateUrl: 'templates/set/feedback.html'
+                  templateUrl: 'templates/set/feedback.html',
+                  controller: 'FeedbackCtrl'
               }
             }
           })
@@ -159,16 +164,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/changeavatar',
             views: {
               'menuContent': {
-                templateUrl: 'templates/set/changeavatar.html'
+                  templateUrl: 'templates/set/changeavatar.html',
+                  controller: 'ChangeAvatarCtrl'
               }
             }
           })
 
-          .state('app.changnicknam', {
-              url: '/changnicknam',
+          .state('app.changnickname', {
+              url: '/changnickname',
               views: {
                   'menuContent': {
-                      templateUrl: 'templates/set/changnicknam.html'
+                      templateUrl: 'templates/set/changnickname.html',
+                      controller: 'ChangNicknameCtrl'
                   }
               }
           })
@@ -176,7 +183,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/changepassword',
             views: {
               'menuContent': {
-                templateUrl: 'templates/set/changepassword.html'
+                  templateUrl: 'templates/set/changepassword.html',
+                  controller: 'ChangePasswordCtrl'
               }
             }
           })
@@ -184,7 +192,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/set',
             views: {
               'menuContent': {
-                templateUrl: 'templates/personalcenter/set.html'
+                  templateUrl: 'templates/personalcenter/set.html',
+                  controller: 'SetCtrl'
               }
             }
 
@@ -199,25 +208,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
           })
 
-          .state('app.recommendfriend', {
-            url: '/recommendfriend',
-            views: {
-              'menuContent': {
-                templateUrl: 'templates/personalcenter/recommendfriend.html'
-              }
-            }
-
-          })
-
           .state('app.history', {
             url: '/history',
             views: {
               'menuContent': {
+                  controller: 'HistoryCtrl',
                 templateUrl: 'templates/personalcenter/history.html'
               }
             }
-
           })
+          //消息列表
+          .state('app.messagelist', {
+              url: '/messagelist',
+              views: {
+                  'menuContent': {
+                      controller: 'MessagelistCtrl',
+                      templateUrl: 'templates/personalcenter/messagelist.html'
+
+                  }
+              }
+          })
+
           .state('app.goodsmessage', {
             url: '/goodsmessage',
             views: {
@@ -236,16 +247,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               }
             }
           })
-          .state('app.fenxiang', {
-              url: '/fenxiang',
-              views: {
-                  'menuContent': {
-                      templateUrl: 'templates/share/fenxiang.html',
-                      controller: 'MyController'
-
-                  }
-              }
-          })
           .state('app.single', {
             url: '/playlists/:playlistId',
             views: {
@@ -256,5 +257,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             }
           });
       // if none of the above states are matched, use this as the fallback
-      $urlRouterProvider.otherwise('/app/xinyuandan');
+        $urlRouterProvider.otherwise('app/wishlists');
     });
