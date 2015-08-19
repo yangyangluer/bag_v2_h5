@@ -21,19 +21,19 @@ angular.module('starter.controllers', [])
   $scope.loginData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+        $ionicModal.fromTemplateUrl('templates/share/model.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
+        $scope.closeModel = function () {
     $scope.modal.hide();
   };
 
   // Open the login modal
-  $scope.login = function() {
+        $scope.openModel = function () {
     $scope.modal.show();
   };
 
@@ -49,6 +49,7 @@ angular.module('starter.controllers', [])
   };
 })
     .controller('wishlist', ['$scope', 'serverData', '$localstorage', function ($scope, serverData, $localstorage) {
+
         var xinyuandan = $localstorage.getObject("wishlist");
         //var xinyuandan = window.tempdata;
         $scope.wishlist = [];
@@ -69,10 +70,9 @@ angular.module('starter.controllers', [])
       });
     }])
 
-    .controller('share', function ($scope, $ionicModal) {
+    .controller('ShareCtrl', function ($scope, $ionicModal) {
         $ionicModal.fromTemplateUrl('templates/share/model.html', {
-            scope: $scope,
-            animation: 'slide-in-up'
+            scope: $scope
         }).then(function (modal) {
             $scope.modal = modal;
         });
@@ -94,4 +94,90 @@ angular.module('starter.controllers', [])
         //$scope.$on('modal.removed', function() {
         //    // 执行动作
         //});
+    })
+    //个人中心
+    .controller('PersonalCenterCtrl', function ($scope) {
+        //获取用户信息
+        //安全退出
+
+    })
+    //反馈
+    .controller('FeedbackCtrl', function ($scope, $ionicModal) {
+        //提交
+    })
+    //设置
+    .controller('SetCtrl', function ($scope, $ionicModal) {
+        $ionicModal.fromTemplateUrl('templates/set/feedback.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.closefeed = function () {
+            $scope.modal.hide();
+        };
+
+        // Open the feedback modal
+        $scope.openfeed = function () {
+            $scope.modal.show();
+        };
+    })
+    //他人的购物袋
+    .controller('HisshopingbagsCtrl', function ($scope) {
+
+    })
+    //修改图片
+    .controller('ChangeAvatarCtrl', function ($scope) {
+
+    })
+    //修改密码
+    .controller('ChangePasswordCtrl', function ($scope) {
+
+    })
+    //修改昵称
+    .controller('ChangNicknameCtrl', function ($scope) {
+        //修改昵称
+    })
+    //历史记录
+    .controller('HistoryCtrl', function ($scope) {
+
+    })
+    //消息列表
+    .controller('MessagelistCtrl', function ($scope) {
+
+    })
+    //我是买手
+    .controller('BoughthandCtrl', function ($scope, $ionicModal) {
+        $ionicModal.fromTemplateUrl('templates/boughthand/contactbuyer.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
+        $scope.closeContact = function () {
+            $scope.modal.hide();
+        };
+
+        // Open the feedback modal
+        $scope.openContact = function () {
+            $scope.modal.show();
+        };
+    })
+    //联系买家
+    .controller('ContactbuyerCtrl', function ($scope) {
+        //发送
+    })
+
+    //商品列表
+    .controller('GoodslistCtrl', function ($scope) {
+
+    })
+    //发现商品
+    .controller('FindGoodsCtrl', function ($scope) {
+        //搜索方法
+    })
+//商品详细信息
+    .controller('GoodsdetailsCtrl', function ($scope) {
+        //加入心愿单方法
+
     });
