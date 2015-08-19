@@ -1,38 +1,37 @@
-<ion-view title="联系">
-    <ion-header-bar class="bar-assertive">
-        <a href="#/app/menu" class="button button-assertive button-icon  icon ion-ios7-arrow-back">购物袋</a>
-
-        <h1 class="title">我是买手</h1>
-    </ion-header-bar>
-    <ion-content padding="true" scroll="false" class="has-header">
-        <ion-list></ion-list>
+<ion-view view-title="心愿单">
+    <ion-content>
         <ion-list>
-            <ion-item class="item-thumbnail-left">
-
-                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
-
-                <h2>用户abc</h2>
-
-                <p>你能帮她带2件 lv包么 ！</p>
-                <ion-list></ion-list>
+            <ion-item ng-repeat="wish in wishlist" href="#/app/goodsdetails/{{wish._id}}" ng-click="test()">
+                <div class="scroll-content text-center padding">
+                    <h3>{{wish.title}}</h3>
+                </div>
+                <div style="width: auto; height: 250px;">
+                    <img ng-src="{{wish.image}}" class="image ion-image"
+                         style="width: 100%;height: 100%;display: block;"/>
+                </div>
+                <div>
+                    <a class="button button-stable button-block  icon-left ion-share"
+                       style="font-size: 20px; background-color: #cccccc;color: #f8f8f8  !important;">
+                        <span style="margin-left:-150px;"/>
+                        {{wish.site_name}}
+                        </span>
+            <span style="margin-left: 50px;">
+             {{wish.product_price_amount}} {{wish.product_price_currency}}
+            </span>
+                    </a>
+                </div>
+                <!--    <div class="text-center">
+                      {{wish.site_name}}
+                    </div>
+                    <div class="text-center">
+                      {{wish.product_price_amount}} {{wish.product_price_currency}}
+                    </div>-->
                 <div class="button-bar">
-                    <a class="button button-assertive button-block" href="#/app/wishlistdetails">详情</a>
-                    <a href="#/contact" class="button button-assertive button-block " href="#/app/contactbuyer">联系</a>
+                    <a class="button button-stable button-block  icon-left ion-share" href="#/app/share">分享</a>
+                    <a class="button button-stable button-block  icon-right ion-edit">备注</a>
                 </div>
             </ion-item>
-            <ion-item class="item-thumbnail-left">
-                <img src="http://ionicframework.com/img/docs/mcfly.jpg">
 
-                <h2>用户bbbb</h2>
-
-                <p>你能帮他带2件皮质羊毛衫！</p>
-
-                <div class="button-bar">
-                    <button class="button button-assertive button-block ">详情</button>
-                    <a href="#/contact" class="button button-assertive button-block ">联系</a>
-                </div>
-            </ion-item>
         </ion-list>
     </ion-content>
-
 </ion-view>
