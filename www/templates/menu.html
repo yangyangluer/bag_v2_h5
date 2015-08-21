@@ -23,33 +23,37 @@
       <h1 class="title">个人中心</h1>
     </ion-header-bar>
     <ion-content>
-      <div class="spacer"></div>
       <ion-item>
         <div class="item-thumbnail item-image">
-          <img src="http://ionicframework.com/img/docs/mcfly.jpg" class="user_img">
+          <a href="#/app/login"><img src="http://ionicframework.com/img/docs/mcfly.jpg" class="user_img"></a>
         </div>
       </ion-item>
       <ion-list>
-        <ion-item href="#/app/goodsmessage">消息</ion-item>
-        <ion-item href="#/app/history">历史</ion-item>
+        <ion-item class="item-icon-right" href="#/app/messagelist"><i class="icon ion-chevron-right"></i>消息</ion-item>
+        <ion-item class="item-icon-right" href="#/app/history"><i class="icon ion-chevron-right"></i>历史</ion-item>
       </ion-list>
       <div class="spacer"></div>
       <ion-list>
-        <ion-item href="#/app/iboughthand">我要代购</ion-item>
-        <ion-item href="#/app/about">关于</ion-item>
+        <ion-item class="item-icon-right" href="#/app/iboughthand"><i class="icon ion-chevron-right"></i>我要代购</ion-item>
+        <ion-item class="item-icon-right" href="#/app/about"><i class="icon ion-chevron-right"></i>关于</ion-item>
       </ion-list>
       <div class="spacer"></div>
       <ion-list>
-        <ion-item href="#/app/set">设置</ion-item>
+        <ion-item class="item-icon-right" href="#/app/set"><i class="icon ion-chevron-right"></i>设置</ion-item>
       </ion-list>
       <div class="spacer"></div>
-      <div class="button-bar">
-        <a class="button button-stable button-block ion-social-twitch-outline">微信</a>
-        <a class="button button-stable button-block ">朋友圈</a>
-        <a class="button button-stable button-block ">微博</a>
-        <a class="button button-stable button-block ">邮件</a>
+      <div class="row">
+        <div class="col"><a><img src="image/wxp.jpg"></a></div>
+        <div class="col"><a><img src="image/wxp.jpg"></a></div>
+        <div class="col"><a><img src="image/wxp.jpg"></a></div>
+        <div class="col"><a><img src="image/wxp.jpg"></a></div>
       </div>
-
+      <div class="row">
+        <div class="col text-center"><a>微信</a></div>
+        <div class="col text-center"><a>朋友圈</a></div>
+        <div class="col text-center"><a>微博</a></div>
+        <div class="col text-center"><a>邮件</a></div>
+      </div>
       <button class="button button-assertive button-block ">安全退出</button>
     </ion-content>
   </ion-side-menu>

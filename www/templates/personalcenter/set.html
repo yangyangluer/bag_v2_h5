@@ -2,13 +2,16 @@
     <ion-content padding="true" class="has-header">
         <ion-list></ion-list>
         <ion-list>
-            <ion-item href="#/app/changnickname">修改昵称</ion-item>
-            <ion-item href="#/app/changepassword">修改密码</ion-item>
-            <ion-item href="#/app/changeavatar">更换头像</ion-item>
+            <ion-item class="item-icon-right" href="#/app/changnickname"><i class="icon ion-chevron-right"></i>修改昵称
+            </ion-item>
+            <ion-item class="item-icon-right" href="#/app/changepassword"><i class="icon ion-chevron-right"></i>修改密码
+            </ion-item>
+            <ion-item class="item-icon-right" href="#/app/changeavatar"><i class="icon ion-chevron-right"></i>更换头像
+            </ion-item>
         </ion-list>
-        <div class="spacer" style="width: 300px; height: 32px;"></div>
+        <div class="spacer"></div>
         <ion-list>
-            <ion-item ng-click="openfeed()">反馈</ion-item>
+            <ion-item class="item-icon-right" ng-click="openfeed()"><i class="icon ion-chevron-right"></i>反馈</ion-item>
         </ion-list>
     </ion-content>
 </ion-view>

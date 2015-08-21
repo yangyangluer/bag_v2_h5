@@ -81,7 +81,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
               url: '/goodslist',
               views: {
                   'menuContent': {
-                      controller: 'GoodslistCtrl',
+                      //controller: 'GoodslistCtrl',
                       templateUrl: 'templates/goods/goodslist.html'
                   }
               }
@@ -90,7 +90,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
             url: '/customgoods',
             views: {
               'menuContent': {
-                  templateUrl: 'templates/goods/customgoods.html'
+                  templateUrl: 'templates/goods/customgoods.html',
+                  controller: 'CustomGoodsCtrl'
               }
             }
           })
@@ -118,6 +119,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                   'menuContent': {
                       templateUrl: 'templates/wish/wishlists.html',
                       controller: 'wishlist'
+                  }
+              }
+          })
+
+          .state('app.remark', {
+              url: '/remark',
+              views: {
+                  'menuContent': {
+                      templateUrl: 'templates/wish/remark.html',
+                      controller: 'RemarkCtrl'
                   }
               }
           })
@@ -246,16 +257,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                 templateUrl: 'templates/personalcenter/systemmessage.html'
               }
             }
-          })
-          .state('app.single', {
-            url: '/playlists/:playlistId',
-            views: {
-              'menuContent': {
-                templateUrl: 'templates/playlist.html',
-                controller: 'PlaylistCtrl'
-              }
-            }
           });
+        //.state('app.single', {
+        //  url: '/playlists/:playlistId',
+        //  views: {
+        //    'menuContent': {
+        //      templateUrl: 'templates/playlist.html',
+        //      controller: 'PlaylistCtrl'
+        //    }
+        //  }
+        //});
       // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('app/wishlists');
     });

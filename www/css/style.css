@@ -17,4 +17,7 @@
     height:100px;
 }
 
-h2{text-align: center;}
+/*> */
+.item-icon-right .icon {
+    font-size: 10px;
+}

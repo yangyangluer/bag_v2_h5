@@ -1,14 +1,13 @@
-
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
 
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
+        // With the new view caching in Ionic, Controllers are only called
+        // when they are recreated or on app start, instead of every page change.
+        // To listen for when this page is active (for example, to refresh data),
+        // listen for the $ionicView.enter event:
+        //$scope.$on('$ionicView.enter', function(e) {
+        //});
 //$scope.init = function() {
 //  alert(1);
 //  $scope.eb = new vertx.EventBus("http://192.168.1.106:8080/eventbus");
@@ -17,60 +16,77 @@ angular.module('starter.controllers', [])
 //  });
 //  alert(2);
 //}
-  // Form data for the login modal
-  $scope.loginData = {};
+        // Form data for the login modal
+        $scope.loginData = {};
 
-  // Create the login modal that we will use later
+        // Create the login modal that we will use later
+        $ionicModal.fromTemplateUrl('templates/login/login.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
+
+        // Triggered in the login modal to close it
+        $scope.closeLogin = function () {
+            $scope.modal.hide();
+        };
+        // Open the login modal
+        $scope.login = function () {
+            $scope.modal.show();
+        };
+        // Perform the login action when the user submits the login form
+        $scope.doLogin = function () {
+            console.log('Doing login', $scope.loginData);
+
+            // Simulate a login delay. Remove this and replace with your login
+            // code if using a login system
+            $timeout(function () {
+                $scope.closeLogin();
+            }, 1000);
+        };
         $ionicModal.fromTemplateUrl('templates/share/model.html', {
-    scope: $scope
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
+            scope: $scope
+        }).then(function (modal) {
+            $scope.modal = modal;
+        });
 
-  // Triggered in the login modal to close it
+        // Triggered in the login modal to close it
         $scope.closeModel = function () {
-    $scope.modal.hide();
-  };
-
-  // Open the login modal
+            $scope.modal.hide();
+        };
+        // Open the login modal
         $scope.openModel = function () {
-    $scope.modal.show();
-  };
+            $scope.modal.show();
+        };
+        $scope.$on('$destroy', function () {
+            $scope.modal.remove();
+        });
 
-  // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
-  };
-})
+    })
     .controller('wishlist', ['$scope', 'serverData', '$localstorage', function ($scope, serverData, $localstorage) {
-
         var xinyuandan = $localstorage.getObject("wishlist");
         //var xinyuandan = window.tempdata;
         $scope.wishlist = [];
-        angular.forEach(xinyuandan,function(item,i){
+        angular.forEach(xinyuandan, function (item, i) {
             item.$$hashKey = null;
             $scope.wishlist.push(item);
         });
         console.log($scope.wishlist);
-  // $scope.playlists.concat();
+        // $scope.playlists.concat();
 
-       // console.log($scope.playlists);
-      serverData.receive().then(null, null, function(message) {
-         //console.log(message);
-          var ls = JSON.parse(message);
-          //console.log("ls======" + ls);
-          $scope.wishlist.unshift(ls);
-          $localstorage.setObject("wishlist", $scope.wishlist);
-      });
+        // console.log($scope.playlists);
+        serverData.receive().then(null, null, function (message) {
+            //console.log(message);
+            var ls = JSON.parse(message);
+            //console.log("ls======" + ls);
+            $scope.wishlist.unshift(ls);
+            $localstorage.setObject("wishlist", $scope.wishlist);
+        });
     }])
 
+
     .controller('ShareCtrl', function ($scope, $ionicModal) {
+
         $ionicModal.fromTemplateUrl('templates/share/model.html', {
             scope: $scope
         }).then(function (modal) {
@@ -122,6 +138,11 @@ angular.module('starter.controllers', [])
             $scope.modal.show();
         };
     })
+
+    //备注
+    .controller('RemarkCtrl', function ($scope) {
+
+    })
     //他人的购物袋
     .controller('HisshopingbagsCtrl', function ($scope) {
 
@@ -143,8 +164,10 @@ angular.module('starter.controllers', [])
 
     })
     //消息列表
-    .controller('MessagelistCtrl', function ($scope) {
-
+    .controller('MessagelistCtrl', function ($scope, $ionicTabsDelegate) {
+        $scope.selectTabWithIndex = function (index) {
+            $ionicTabsDelegate.select(index);
+        }
     })
     //我是买手
     .controller('BoughthandCtrl', function ($scope, $ionicModal) {
@@ -175,6 +198,11 @@ angular.module('starter.controllers', [])
     //发现商品
     .controller('FindGoodsCtrl', function ($scope) {
         //搜索方法
+    })
+
+    .controller('CustomGoodsCtrl', function ($scope) {
+        //加入心愿单方法
+
     })
 //商品详细信息
     .controller('GoodsdetailsCtrl', function ($scope) {

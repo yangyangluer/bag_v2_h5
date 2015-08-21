@@ -1,22 +1,24 @@
 <ion-view title="自定义商品">
     <ion-content padding="true" class="has-header">
         <ion-list>
+            <span class="input-label">商品名称</span>
             <label class="item item-input">
-                <span class="input-label">商品名称</span>
                 <input type="text" placeholder="请输入商品名称">
             </label>
+            <span class="input-label">备注</span>
             <label class="item item-input">
-                <span class="input-label">备注</span>
+
                 <input type="text" placeholder="请输入备注">
             </label>
-            <label class="item item-input">
+            <label>
                 <span class="input-label">商品图片</span>
-                <input type="text" placeholder="">
+
+                <div class="user_img ">
+                    <a class="button button-light button-outline icon ion-android-add"></a>
+                </div>
             </label>
         </ion-list>
-        <div class="button-bar">
-            <button class="button button-light button-outline button-block button-large icon ion-android-add"></button>
-        </div>
-        <button class="button button-assertive button-block ">加入心愿单</button>
+
+        <a class="button button-light button-block" href="#/app/wishlists">加入心愿单</a>
     </ion-content>
 </ion-view>
