@@ -1,6 +1,8 @@
 angular.module('starter.controllers', [])
+    .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $location) {
+        $scope.currentUsername = {};
 
-    .controller('AppCtrl', function ($scope, $ionicModal, $timeout) {
+        $scope.wishlist = [];
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -17,7 +19,6 @@ angular.module('starter.controllers', [])
 //  alert(2);
 //}
         // Form data for the login modal
-        $scope.loginData = {};
 
         // Create the login modal that we will use later
         $ionicModal.fromTemplateUrl('templates/login/login.html', {
@@ -34,21 +35,12 @@ angular.module('starter.controllers', [])
         $scope.login = function () {
             $scope.modal.show();
         };
-        // Perform the login action when the user submits the login form
-        $scope.doLogin = function () {
-            console.log('Doing login', $scope.loginData);
 
-            // Simulate a login delay. Remove this and replace with your login
-            // code if using a login system
-            $timeout(function () {
-                $scope.closeLogin();
-            }, 1000);
-        };
-        $ionicModal.fromTemplateUrl('templates/share/model.html', {
-            scope: $scope
-        }).then(function (modal) {
-            $scope.modal = modal;
-        });
+        //$ionicModal.fromTemplateUrl('templates/share/model.html', {
+        //    scope: $scope
+        //}).then(function (modal) {
+        //    $scope.modal = modal;
+        //});
 
         // Triggered in the login modal to close it
         $scope.closeModel = function () {
@@ -61,15 +53,20 @@ angular.module('starter.controllers', [])
         $scope.$on('$destroy', function () {
             $scope.modal.remove();
         });
+        $scope.toLogin = function () {
+            $location.path('/app/login');
+        };
+
 
     })
-    .controller('wishlist', ['$scope', 'serverData', '$localstorage', function ($scope, serverData, $localstorage) {
+    .controller('wishlist', function ($scope, serverData, wishlistServ, $localstorage) {
         var xinyuandan = $localstorage.getObject("wishlist");
-        //var xinyuandan = window.tempdata;
-        $scope.wishlist = [];
+        ////var xinyuandan = window.tempdata;
         angular.forEach(xinyuandan, function (item, i) {
+            if (i > 10) return;
             item.$$hashKey = null;
             $scope.wishlist.push(item);
+
         });
         console.log($scope.wishlist);
         // $scope.playlists.concat();
@@ -82,7 +79,15 @@ angular.module('starter.controllers', [])
             $scope.wishlist.unshift(ls);
             $localstorage.setObject("wishlist", $scope.wishlist);
         });
-    }])
+        $scope.refuse = function () {
+            alert($scope.currentUsername.username);
+            wishlistServ.get({account: $scope.currentUsername.username}, function (data) {
+                $scope.wishlist = data;
+
+        });
+        }
+
+    })
 
 
     .controller('ShareCtrl', function ($scope, $ionicModal) {
@@ -208,4 +213,52 @@ angular.module('starter.controllers', [])
     .controller('GoodsdetailsCtrl', function ($scope) {
         //加入心愿单方法
 
+    })
+    .controller('GlobalCtrl', function ($scope, Host, $q) {
+        $scope.host = Host.host;
+        $scope.server = Host.getServer();
+        $scope.setHost = function (host) {
+            if (host && host.length > 1) {
+                $scope.host = host;
+                Host.setHost(host);
+            }
+        };
+    })
+    .controller('SignupCtrl', function ($scope, Users) {
+        $scope.user = {};
+        $scope.signup = function () {
+            $scope.user.password = hex_md5($scope.user.password);
+            var User = new Users();
+            Users.save(
+                {account: 'jhoeller'}, $scope.user, function (returnval) {
+                    console.log(returnval);
+                    //$scope.user = returnval;
+                });
+            //User.account='jhoeller';
+            //User.username=$scope.user.username;
+            //User.password=$scope.user.password;
+            //User.$update();
+        };
+    }).controller('loginCtrl', function ($scope, Host, loginServ, $location, wishlistServ) {
+        $scope.logindata = {};
+        $scope.logindata.username = 'jhoeller';
+        // Perform the login action when the user submits the login form
+        $scope.doLogin = function () {
+            console.log('Doing login', $scope.logindata.username);
+            loginServ.get({account: $scope.logindata.username}, function (user) {
+
+                if ($scope.logindata.password == user.password) {
+                    $scope.currentUsername = user;
+                    wishlistServ.query({account: $scope.currentUsername.username}, function (data) {
+                        $scope.wishlist = [];
+                        // console.log('Doing login', $scope.wishlist[0].goods.title);
+                    });
+                    $location.path('app/wishlists');
+                } else {
+                    alert('密码不正确')
+                }
+            });
+
+
+        };
     });

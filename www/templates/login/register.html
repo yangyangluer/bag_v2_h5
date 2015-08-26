@@ -4,11 +4,11 @@
             <ion-list>
                 <label class="item item-input">
                     <span class="input-label">Tel</span>
-                    <input type="text" placeholder="请输入手机号码">
+                    <input type="text" placeholder="请输入手机号码" ng-model="user.username" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">pass</span>
-                    <input type="password" placeholder="请输入密码 ">
+                    <input type="password" placeholder="请输入密码 " ng-model="user.password" required>
                 </label>
                 <label class="item item-input">
                     <span class="input-label">Input</span>
@@ -16,7 +16,7 @@
                 </label>
             </ion-list>
             <button class="button button-stable button-block ">点击发送验证码</button>
-            <a href="#/app/login" class="button button-stable button-block ">注册</a>
+            <a class="button button-stable button-block " ng-click="signup()">注册</a>
         </form>
     </ion-content>
 </ion-view>

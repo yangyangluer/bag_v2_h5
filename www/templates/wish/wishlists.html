@@ -1,6 +1,9 @@
 <ion-view view-title="心愿单">
     <ion-content>
         <ion-list>
+            <ion-item>
+                <button class="button button-assertive button-block " ng-click="refuse()">刷新</button>
+            </ion-item>
             <ion-item ng-repeat="wish in wishlist" href="#/app/wishlistdetails/{{wish._id}}" ng-click="test()">
                 <div class="scroll-content text-center padding">
                     <h3>{{wish.title}}</h3>
