@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
     .controller('AppCtrl', function ($scope, $ionicModal, $timeout, $location) {
-        $scope.currentUsername = {};
+        $scope.currentUser = {};
 
         $scope.wishlist = [];
 
@@ -60,31 +60,37 @@ angular.module('starter.controllers', [])
 
     })
     .controller('wishlist', function ($scope, serverData, wishlistServ, $localstorage) {
-        var xinyuandan = $localstorage.getObject("wishlist");
-        ////var xinyuandan = window.tempdata;
-        angular.forEach(xinyuandan, function (item, i) {
-            if (i > 10) return;
-            item.$$hashKey = null;
-            $scope.wishlist.push(item);
+        //var xinyuandan = $localstorage.getObject("wishlist");
+        //////var xinyuandan = window.tempdata;
+        //angular.forEach(xinyuandan, function (item, i) {
+        //    if (i > 10) return;
+        //    item.$$hashKey = null;
+        //    $scope.wishlist.push(item);
+        //
+        //});
+        //console.log($scope.wishlist);
+        //// $scope.playlists.concat();
+        //
+        //// console.log($scope.playlists);
+        //serverData.receive().then(null, null, function (message) {
+        //    //console.log(message);
+        //    var ls = JSON.parse(message);
+        //    //console.log("ls======" + ls);
+        //    $scope.wishlist.unshift(ls);
+        //   // $localstorage.setObject("wishlist", $scope.wishlist);
+        //});
+        $scope.refusetest = function () {
+            alert($scope.$parent.currentUser.username);
+            wishlistServ.query({account: $scope.$parent.currentUser.username}, function (wishs) {
+                console.log('Doing login', wishs);
+                angular.forEach(wishs, function (item, i) {
+                    alert(item.goods.title);
+                    if (i > 10) return;
+                    $scope.wishlist.push(item.goods);
 
-        });
-        console.log($scope.wishlist);
-        // $scope.playlists.concat();
+                });
 
-        // console.log($scope.playlists);
-        serverData.receive().then(null, null, function (message) {
-            //console.log(message);
-            var ls = JSON.parse(message);
-            //console.log("ls======" + ls);
-            $scope.wishlist.unshift(ls);
-            $localstorage.setObject("wishlist", $scope.wishlist);
-        });
-        $scope.refuse = function () {
-            alert($scope.currentUsername.username);
-            wishlistServ.get({account: $scope.currentUsername.username}, function (data) {
-                $scope.wishlist = data;
-
-        });
+            });
         }
 
     })
@@ -242,17 +248,18 @@ angular.module('starter.controllers', [])
     }).controller('loginCtrl', function ($scope, Host, loginServ, $location, wishlistServ) {
         $scope.logindata = {};
         $scope.logindata.username = 'jhoeller';
+        $scope.logindata.password = 'password';
         // Perform the login action when the user submits the login form
         $scope.doLogin = function () {
-            console.log('Doing login', $scope.logindata.username);
             loginServ.get({account: $scope.logindata.username}, function (user) {
 
                 if ($scope.logindata.password == user.password) {
-                    $scope.currentUsername = user;
-                    wishlistServ.query({account: $scope.currentUsername.username}, function (data) {
-                        $scope.wishlist = [];
-                        // console.log('Doing login', $scope.wishlist[0].goods.title);
-                    });
+                    //$scope.currentUsername.done(user);
+                    console.log('$scope', $scope);
+                    console.log('$scope.$parent', $scope.$parent);
+                    $scope.$parent.currentUser = user;
+                    $scope.wishlist.splice(0);
+
                     $location.path('app/wishlists');
                 } else {
                     alert('密码不正确')
